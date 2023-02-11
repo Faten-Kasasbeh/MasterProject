@@ -1,0 +1,125 @@
+/*--------------------------------------------------------------------- File Name: style.css ---------------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------------- import Fonts ---------------------------------------------------------------------*/
+
+@import url('https://fonts.googleapis.com/css?family=Rajdhani:300,400,500,600,700');
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
+
+
+.client_section {
+    width: 100%;
+    float: left;
+    padding-bottom: 160px;
+}
+
+.client_taital {
+    width: 100%;
+    font-size: 40px;
+    color: #131313;
+    font-weight: bold;
+    padding-top: 30px;
+    text-align: center;
+}
+
+.client_section_2 {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #ffffff;
+    box-shadow: 0px 1px 16px -6px;
+    border-radius: 30px;
+    padding: 50px 70px;
+    margin-top: 50px;
+}
+
+.client_main {
+    width: 100%;
+    display: flex;
+}
+
+.box_left {
+    width: 48%;
+}
+
+.box_right {
+    width: 48%;
+    float: right;
+    padding-top: 65px;
+    margin-left: 30px;
+}
+
+.lorem_text {
+    width: 100%;
+    font-size: 16px;
+    text-align: center;
+    margin: 0px;
+    color: #0d0d0d;
+    border: 1px solid #0d0d0d;
+    padding: 90px 30px;
+    border-radius: 30px;
+}
+
+.client_taital_left {
+    width: 40%;
+    float: left;
+}
+
+.client_taital_right {
+    width: 60%;
+    float: left;
+}
+
+.client_img {
+    width: 60px;
+    float: left;
+    text-align: left;
+}
+
+.quick_icon {
+    width: 100%;
+    float: left;
+    text-align: center;
+    padding-top: 30px;
+}
+
+.client_name {
+    width: 100%;
+    float: left;
+    font-size: 24px;
+    color: #012628;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: left;
+    padding-top: 53px;
+    padding-bottom: 0px;
+}
+
+.customer_text {
+    width: 100%;
+    float: left;
+    font-size: 16px;
+    color: #085a57;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: left;
+    margin: 0px;
+}
+
+.carousel-indicators li {
+   margin-top:40px;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: #8781bd;
+}
+
+.carousel-indicators .active {
+    background-color: #2b2278;
+}
+
+
+/* client section end */
+
+
+
