@@ -1,0 +1,95 @@
+﻿
+@model IEnumerable<Master_Project.Models.Informaion>
+
+
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+
+        <div class="row ">
+            <div class="col-12 grid-margin">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Order Status</h4>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+
+                                        <th>  Name </th>
+                                        <th> Job Title</th>
+                                        <th> City </th>
+                                        <th> Phone </th>
+                                        <th> Nationality</th>
+                                        <th>Accepted Status </th>
+                                        <th> Payment Status </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+
+                                            <td>
+                                                <img src="~/@item.Img" alt="image" />
+                                                <span class="pl-2">@item.FirstName @item.LastName</span>
+                                            </td>
+                                            <td> @item.Job.JobName </td>
+                                            <td> @item.City.CityName </td>
+                                            <td>@item.Phone</td>
+                                            <td>@item.Ntionality </td>
+                                            @if (item.Accepted == true)
+                                            {
+
+                                                <td><div class="badge badge-outline-success">Approved</div> </td>
+                                            }
+
+
+                                            @if (item.Accepted == false)
+                                            {
+
+
+                                                <td><div class="badge badge-outline-danger">Regected</div> </td>
+                                            }
+                                            @if (item.Accepted == null)
+                                            {
+                                                <td><div class="badge badge-outline-warning">Pending</div> </td>
+
+                                            }
+
+                                            @if (item.IsPayed == true)
+                                            {
+
+                                                <td><div class="badge badge-outline-success">Payed</div> </td>
+                                            }
+
+
+                                            @if (item.IsPayed == false)
+                                            {
+
+
+                                                <td><div class="badge badge-outline-danger">Unpaid</div> </td>
+                                            }
+                                            @if (item.IsPayed == null)
+                                            {
+                                                <td><div class="badge badge-outline-warning">Free Trial</div> </td>
+
+                                            }
+                                        </tr>
+
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+

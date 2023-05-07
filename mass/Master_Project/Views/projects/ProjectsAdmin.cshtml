@@ -1,0 +1,58 @@
+﻿
+@model IEnumerable<Master_Project.Models.project>
+
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h3 class="page-title"> All Projects 
+           </h3>
+           
+        </div>
+        <div class="row">
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                      
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Project Name</th>
+                                        <th>Developer Name</th>
+                                        <th>Project Link</th>
+                                             <th>Details</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (var item in Model)
+                                    {
+
+                                        <tr>
+                                            <td>@item.ProjectName</td>
+                                            <td>@item.Informaion.FirstName</td>
+                                            <td>@item.ProjectLink</td>
+                                            <td><a href="@Url.Action("Details", "projects", new { id = item.IdProject })" class="badge badge-warning">Show Details</a></td>
+                                        </tr>}
+                                     
+                                    </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+     
+        </div>
+    </div>
+    <!-- content-wrapper ends -->
+    <!-- partial:../../partials/_footer.html -->
+  
+    <!-- partial -->
+</div>
+
+

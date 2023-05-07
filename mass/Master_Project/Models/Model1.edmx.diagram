@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c56c721e550d4e648572d35b18c3ce42" Name="Diagram1">
+        <EntityTypeShape EntityType="Master_projectModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Master_projectModel.AspNetRole" Width="1.5" PointX="3.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Master_projectModel.AspNetUserClaim" Width="1.5" PointX="3" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Master_projectModel.AspNetUserLogin" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Master_projectModel.AspNetUserRole" Width="1.5" PointX="6" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Master_projectModel.AspNetUser" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Master_projectModel.City" Width="1.5" PointX="3.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Master_projectModel.Informaion" Width="1.5" PointX="8" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Master_projectModel.Job" Width="1.5" PointX="3.75" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Master_projectModel.project" Width="1.5" PointX="10.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Master_projectModel.University" Width="1.5" PointX="3.75" PointY="14.875" IsExpanded="true" />
+        <AssociationConnector Association="Master_projectModel.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" ManuallyRouted="false" />
+        <AssociationConnector Association="Master_projectModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="Master_projectModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="Master_projectModel.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="Master_projectModel.FK_Informaions_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="Master_projectModel.FK_Informaions_city" ManuallyRouted="false" />
+        <AssociationConnector Association="Master_projectModel.FK_Informaions_Jobs" ManuallyRouted="false" />
+        <AssociationConnector Association="Master_projectModel.FK_Informaions_Universities" ManuallyRouted="false" />
+        <AssociationConnector Association="Master_projectModel.FK_projects_Informaions" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

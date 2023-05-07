@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Master_Project.Models.Informaion>
+<section class="section-hero overlay inner-page bg-image" style="background-image: url('../../template/images/bg.png');" id="home-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1 class="text-white font-weight-bold">Meet The Best Web Developers</h1>
+                <div class="custom-breadcrumbs">
+                    <a href="@Url.Action("Index","Home")">Home</a> <span class="mx-2 slash">/</span>
+                    <span class="text-white"><strong>O-Team Developers</strong></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="site-section">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-12 text-center" data-aos="fade">
+                <h2 class="section-title mb-3">O-Team</h2>
+            </div>
+        </div>
+        @foreach (var item in Model)
+        {
+            <div class="row align-items-center block__69944">
+
+                <div class="col-md-6">
+                    <img src="~/@item.Img" alt="Image" class="img-fluid mb-4 rounded">
+                </div>
+
+                <div class="col-md-6">
+                    <h3>@item.FirstName @item.LastName</h3>
+                    <p class="text-muted">@item.Job.JobName</p>
+                    <p>
+@item.About                    </p>
+                    <div class=" mt-4">
+                      <a class="btn btn-primary border-width-2 " href="@Url.Action("Profile1", "Informaions", new {id=item.IdUser})"> Show Profile</a>
+                    </div>
+                </div>
+
+
+            </div>
+            }
+</section>
+

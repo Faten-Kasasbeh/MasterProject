@@ -1,0 +1,117 @@
+﻿@model IEnumerable<Master_Project.Models.project>
+
+@*<table>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectLink)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.techniques)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AboutProject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Informaion.IdASP)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.IdProject }) |
+                @Html.ActionLink("Details", "Details", new { id = item.IdProject }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.IdProject })
+            </td>
+        </tr>
+    }
+
+</table>*@
+
+<!-- HOME -->
+<section class="section-hero overlay inner-page bg-image" style="background-image: url('../../template/images/bg.png');" id="home-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1 class="text-white font-weight-bold">All Projects</h1>
+                <div class="custom-breadcrumbs">
+                    <a href="#">Home</a> <span class="mx-2 slash">/</span>
+                    <span class="text-white"><strong>All Projects</strong></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="site-section">
+    <div class="container">
+        <div class="row mb-5">
+
+            @foreach (var item in Model)
+            {
+                <div class="col-md-6 col-lg-4 mb-5">
+                    @{
+                        string videoUrl = item.ProjectLink;
+                        string videoId = videoUrl.Substring(videoUrl.IndexOf("v=") + 2);
+                        string thumbnailUrl = "http://img.youtube.com/vi/" + videoId + "/0.jpg";
+                    }
+
+                    @*<a href="@videoUrl" target="_blank" class="block__96788" data-fancybox data-ratio="2">
+                        <span class="play-icon"><span class="icon-play"></span></span>
+
+                        <img src="@thumbnailUrl" alt="Video thumbnail" class="img-fluid img-shadow" style="width:100%">
+                    </a>*@
+                    <a href="@videoUrl" target="_blank" class="block__96788" data-fancybox data-ratio="2"><img src="@thumbnailUrl" alt="Image" class="img-fluid rounded mb-4"></a>
+                    <h3><a href="blog-single.html" class="text-black">@item.ProjectName</a></h3>
+                    <div> <span class="mx-2">|</span> <a href="@Url.Action("Profile1", "Informaions", new {id=item.Informaion.IdUser})">@item.Informaion.FirstName @item.Informaion.LastName
+                           </a></div>
+                </div>
+            }
+                @*<div class="col-md-6 col-lg-4 mb-5">
+                <a href="blog-single.html"><img src="images/sq_img_2.jpg" alt="Image" class="img-fluid rounded mb-4"></a>
+                <h3><a href="blog-single.html" class="text-black">How to Write a Creative Cover Letter</a></h3>
+                <div>April 15, 2019 <span class="mx-2">|</span> <a href="#">2 Comments</a></div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-5">
+                <a href="blog-single.html"><img src="images/sq_img_4.jpg" alt="Image" class="img-fluid rounded mb-4"></a>
+                <h3><a href="blog-single.html" class="text-black">The Right Way to Quit a Job You Started</a></h3>
+                <div>April 15, 2019 <span class="mx-2">|</span> <a href="#">2 Comments</a></div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-5">
+                <a href="blog-single.html"><img src="images/sq_img_7.jpg" alt="Image" class="img-fluid rounded mb-4"></a>
+                <h3><a href="blog-single.html" class="text-black">7 Factors for Choosing Between Two Jobs</a></h3>
+                <div>April 15, 2019 <span class="mx-2">|</span> <a href="#">2 Comments</a></div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-5">
+                <a href="blog-single.html"><img src="images/sq_img_5.jpg" alt="Image" class="img-fluid rounded mb-4"></a>
+                <h3><a href="blog-single.html" class="text-black">How to Write a Creative Cover Letter</a></h3>
+                <div>April 15, 2019 <span class="mx-2">|</span> <a href="#">2 Comments</a></div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-5">
+                <a href="blog-single.html"><img src="images/sq_img_6.jpg" alt="Image" class="img-fluid rounded mb-4"></a>
+                <h3><a href="blog-single.html" class="text-black">The Right Way to Quit a Job You Started</a></h3>
+                <div>April 15, 2019 <span class="mx-2">|</span> <a href="#">2 Comments</a></div>
+            </div>*@
+            </div>
+        <div class="row pagination-wrap mt-5">
+
+            @*<div class="col-md-12 text-center ">
+                <div class="custom-pagination ml-auto">
+                    <a href="#" class="prev">Prev</a>
+                    <div class="d-inline-block">
+                        <a href="#" class="active">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">4</a>
+                    </div>
+                    <a href="#" class="next">Next</a>
+                </div>
+            </div>*@
+        </div>
+
+    </div>
+</section>

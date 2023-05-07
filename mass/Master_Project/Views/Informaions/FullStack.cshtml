@@ -1,0 +1,133 @@
+﻿@model IEnumerable<Master_Project.Models.Informaion>
+<section class="section-hero overlay inner-page bg-image" style="background-image: url('images/.jpg');" id="home-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1 class="text-white font-weight-bold">Candidate's Testimonials</h1>
+                <div class="custom-breadcrumbs">
+                    <a href="#">Home</a> <span class="mx-2 slash">/</span>
+                    <span class="text-white"><strong>Testimonials</strong></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="site-section" id="next-section">
+    <div class="container">
+
+        <div class="row">
+
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-6 mb-4">
+                    <div class="block__87154">
+                        <blockquote>
+                            <p>&ldquo;@item.About&rdquo;</p>
+                        </blockquote>
+                        <div class="block__91147 d-flex align-items-center">
+                            <figure class="mr-4"><img src="@item.Img" alt="Image" class="img-fluid"></figure>
+                            <div>
+                                <a href="@Url.Action("Profile1", "Informaions", new {id=item.IdUser})"> <h3 class="text-capitalize">@item.FirstName @item.LastName</h3></a>
+                                <span class="position ">@item.Job.JobName</span>
+                                <div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            }
+
+        </div>
+    </div>
+</section>
+
+<table class="table">
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ntionality)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BirthDate)
+            </td>
+            <td>
+                <a href="~/Content/@item.Img" download> <img src="~/Content/@item.Img" width="100px" height="100px" /> </a>
+
+                @*@Html.DisplayFor(modelItem => item.Img)*@
+            </td>
+            <td>
+                <a href="~/Content/@item.CV" download>
+                    <embed src="~/Content/@item.CV"
+                           type="application/pdf" frameBorder="0" scrolling="auto" height="100%" width="100%">
+                    </embed>
+                </a>
+                <a href="~/Content/@item.CV" download>CV</a>
+                @Html.DisplayFor(modelItem => item.CV)
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Major)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GradDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.About)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Skills)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Github)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Experiences)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LogInDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Accepted)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsPayed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AspNetUser.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City.CityName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Job.JobName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.University1.UniversityName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.IdUser }) |
+                @Html.ActionLink("Details", "Details", new { id = item.IdUser }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.IdUser })
+            </td>
+        </tr>
+    }
+
+</table>

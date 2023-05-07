@@ -1,0 +1,192 @@
+﻿@model Master_Project.Models.Informaion
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Informaion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ntionality)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ntionality)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BirthDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BirthDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Img)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Img)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Major)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Major)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GradDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GradDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.About)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.About)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Skills)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Skills)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Github)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Github)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Experiences)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Experiences)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LogInDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LogInDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Accepted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Accepted)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsPayed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsPayed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AspNetUser.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.City.CityName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City.CityName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Job.JobName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Job.JobName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.University1.UniversityName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.University1.UniversityName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

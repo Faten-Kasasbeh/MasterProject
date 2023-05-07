@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Master_projectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUserRoles" Relationship="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" FromRole="AspNetRoles" ToRole="AspNetUserRoles" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogin">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserRole">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RoleId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="note" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="AspNetRole" Relationship="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" FromRole="AspNetUserRoles" ToRole="AspNetRoles" />
+    <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" FromRole="AspNetUserRoles" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+    <NavigationProperty Name="AspNetUserRoles" Relationship="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserRoles" />
+    <NavigationProperty Name="Informaions" Relationship="Self.FK_Informaions_AspNetUsers" FromRole="AspNetUsers" ToRole="Informaions" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="IdCity" />
+    </Key>
+    <Property Name="IdCity" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Informaions" Relationship="Self.FK_Informaions_city" FromRole="Cities" ToRole="Informaions" />
+  </EntityType>
+  <EntityType Name="Informaion">
+    <Key>
+      <PropertyRef Name="IdUser" />
+    </Key>
+    <Property Name="IdUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdASP" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="Boolean" />
+    <Property Name="Ntionality" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BirthDate" Type="DateTime" Precision="0" />
+    <Property Name="JobTitle" Type="Int32" />
+    <Property Name="Img" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CV" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="University" Type="Int32" />
+    <Property Name="Major" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="GradDate" Type="DateTime" Precision="0" />
+    <Property Name="About" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Skills" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CityInfo" Type="Int32" />
+    <Property Name="Github" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Experiences" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="LogInDate" Type="DateTime" Precision="0" />
+    <Property Name="Accepted" Type="Boolean" />
+    <Property Name="IsPayed" Type="Boolean" />
+    <NavigationProperty Name="AspNetUser" Relationship="Self.FK_Informaions_AspNetUsers" FromRole="Informaions" ToRole="AspNetUsers" />
+    <NavigationProperty Name="City" Relationship="Self.FK_Informaions_city" FromRole="Informaions" ToRole="Cities" />
+    <NavigationProperty Name="Job" Relationship="Self.FK_Informaions_Jobs" FromRole="Informaions" ToRole="Jobs" />
+    <NavigationProperty Name="University1" Relationship="Self.FK_Informaions_Universities" FromRole="Informaions" ToRole="Universities" />
+    <NavigationProperty Name="projects" Relationship="Self.FK_projects_Informaions" FromRole="Informaions" ToRole="projects" />
+  </EntityType>
+  <EntityType Name="Job">
+    <Key>
+      <PropertyRef Name="IdJob" />
+    </Key>
+    <Property Name="IdJob" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="JobName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Informaions" Relationship="Self.FK_Informaions_Jobs" FromRole="Jobs" ToRole="Informaions" />
+  </EntityType>
+  <EntityType Name="project">
+    <Key>
+      <PropertyRef Name="IdProject" />
+    </Key>
+    <Property Name="IdProject" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdUserProject" Type="Int32" />
+    <Property Name="ProjectName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ProjectLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="techniques" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="AboutProject" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ProjectType" Type="Boolean" />
+    <NavigationProperty Name="Informaion" Relationship="Self.FK_projects_Informaions" FromRole="projects" ToRole="Informaions" />
+  </EntityType>
+  <EntityType Name="University">
+    <Key>
+      <PropertyRef Name="IdUnivesrity" />
+    </Key>
+    <Property Name="IdUnivesrity" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UniversityName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Informaions" Relationship="Self.FK_Informaions_Universities" FromRole="Universities" ToRole="Informaions" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+    <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Informaions_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+    <End Role="Informaions" Type="Self.Informaion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Informaions">
+        <PropertyRef Name="IdASP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Informaions_city">
+    <End Role="Cities" Type="Self.City" Multiplicity="0..1" />
+    <End Role="Informaions" Type="Self.Informaion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cities">
+        <PropertyRef Name="IdCity" />
+      </Principal>
+      <Dependent Role="Informaions">
+        <PropertyRef Name="CityInfo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Informaions_Jobs">
+    <End Role="Jobs" Type="Self.Job" Multiplicity="0..1" />
+    <End Role="Informaions" Type="Self.Informaion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Jobs">
+        <PropertyRef Name="IdJob" />
+      </Principal>
+      <Dependent Role="Informaions">
+        <PropertyRef Name="JobTitle" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Informaions_Universities">
+    <End Role="Universities" Type="Self.University" Multiplicity="0..1" />
+    <End Role="Informaions" Type="Self.Informaion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Universities">
+        <PropertyRef Name="IdUnivesrity" />
+      </Principal>
+      <Dependent Role="Informaions">
+        <PropertyRef Name="University" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_projects_Informaions">
+    <End Role="Informaions" Type="Self.Informaion" Multiplicity="0..1" />
+    <End Role="projects" Type="Self.project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Informaions">
+        <PropertyRef Name="IdUser" />
+      </Principal>
+      <Dependent Role="projects">
+        <PropertyRef Name="IdUserProject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Master_projectEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRole" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+    <EntitySet Name="Cities" EntityType="Self.City" />
+    <EntitySet Name="Informaions" EntityType="Self.Informaion" />
+    <EntitySet Name="Jobs" EntityType="Self.Job" />
+    <EntitySet Name="projects" EntityType="Self.project" />
+    <EntitySet Name="Universities" EntityType="Self.University" />
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Informaions_AspNetUsers" Association="Self.FK_Informaions_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Informaions" EntitySet="Informaions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Informaions_city" Association="Self.FK_Informaions_city">
+      <End Role="Cities" EntitySet="Cities" />
+      <End Role="Informaions" EntitySet="Informaions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Informaions_Jobs" Association="Self.FK_Informaions_Jobs">
+      <End Role="Jobs" EntitySet="Jobs" />
+      <End Role="Informaions" EntitySet="Informaions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Informaions_Universities" Association="Self.FK_Informaions_Universities">
+      <End Role="Universities" EntitySet="Universities" />
+      <End Role="Informaions" EntitySet="Informaions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_projects_Informaions" Association="Self.FK_projects_Informaions">
+      <End Role="Informaions" EntitySet="Informaions" />
+      <End Role="projects" EntitySet="projects" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

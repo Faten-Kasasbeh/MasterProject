@@ -1,0 +1,162 @@
+﻿@model IEnumerable<Master_Project.Models.Informaion>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ntionality)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BirthDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Img)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Major)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GradDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.About)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Skills)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Github)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Experiences)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LogInDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Accepted)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsPayed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AspNetUser.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City.CityName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Job.JobName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.University1.UniversityName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ntionality)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BirthDate)
+        </td>
+        <td>
+            <a href="~/Content/@item.Img" download> <img src="~/Content/@item.Img" width="100px" height="100px" /> </a>
+
+            @*@Html.DisplayFor(modelItem => item.Img)*@
+        </td>
+        <td>
+            <a href="~/Content/@item.CV" download>
+                <embed src="~/Content/@item.CV"
+                       type="application/pdf" frameBorder="0"  scrolling="auto" height="100%"  width="100%">
+                </embed>
+            </a>
+            <a href="~/Content/@item.CV" download>CV</a>
+            @Html.DisplayFor(modelItem => item.CV)
+
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Major)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GradDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.About)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Skills)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Github)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Experiences)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LogInDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Accepted)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsPayed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AspNetUser.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.City.CityName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Job.JobName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.University1.UniversityName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdUser }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdUser }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdUser })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,217 @@
+﻿
+@model Master_Project.Models.project
+
+
+
+<section class="section-hero overlay inner-page bg-image" style="background-image: url('../../template/images/bg.png');" id="home-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1 class="text-white font-weight-bold">Create Project</h1>
+                <div class="custom-breadcrumbs">
+                    <a href="#">Home</a> <span class="mx-2 slash">/</span>
+                    <a href="#">Profile</a> <span class="mx-2 slash">/</span>
+                    <span class="text-white"><strong>Create Project</strong></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="py-5 bg-image overlay-primary fixed overlay" id="next" style="background-image: url('images/hero_1.jpg');">
+    <div class="container">
+        <div class="row mb-5 justify-content-center">
+            <div class="col-md-7 text-center">
+                <h2 class="section-title mb-2 text-white">Important instructions</h2>
+            </div>
+        </div>
+        <p class="lead text-white">Here are the steps to properly upload your project on the platform.</p>
+
+
+        <div class="row pb-0 block__19738 section-counter">
+
+
+            <ul class=" text-white" style="text-align:initial">
+                <li> Upload your project video to your YouTube page.</li>
+                <li>Once the video is uploaded, copy the video URL from YouTube</li>
+                <li> Go back to this page.</li>
+                <li>Paste the YouTube video URL into the provided field.</li>
+                <li>Fill in the remaining project details such as the project name, description, and relevant tags.</li>
+                <li>Submit your project.</li>
+            </ul>
+
+
+
+
+
+        </div>
+    </div>
+</section>
+
+
+
+@using (Html.BeginForm("Create", "projects", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <section class="site-section">
+        <div class="container">
+
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-8 mb-4 mb-lg-0">
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <h2>Add Your Project</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="row">
+                        @*<div class="col-6">
+                                <a href="#" class="btn btn-block btn-light btn-md"><span class="icon-open_in_new mr-2"></span>Preview</a>
+                            </div>*@
+                        <div class="col-6">
+                            @*<a href="" class="btn btn-block btn-primary btn-md">Save Job</a>*@
+                            <input type="submit" value="Create" class="btn btn-block btn-primary btn-md" />
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-5">
+                <div class="col-lg-12">
+                    <div class="p-4 p-md-5 border rounded" method="post">
+                        <h3 class="text-black mb-5 border-bottom pb-2">Project Informations</h3>
+
+                        @*<div class="form-group">
+                                <label for="company-website-tw d-block">Upload Featured Image</label> <br>
+                                <label class="btn btn-primary btn-md btn-file">
+                                    Browse File<input type="file" hidden>
+                                </label>
+                            </div>*@
+                        <div class="form-group">
+                            <label>Enter Your Project Name</label>
+                            @Html.EditorFor(model => model.ProjectName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ProjectName, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label>Choose Project Type</label>
+                            <div class="checkbox">
+                                @Html.DropDownListFor(model => model.ProjectType, new List<SelectListItem>
+{
+new SelectListItem { Text = "Singular Project", Value = "True" },
+new SelectListItem { Text = "Group Project ", Value = "False" }
+}, new { @class = "form-control" })
+
+                                @Html.ValidationMessageFor(model => model.ProjectType, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>Write Brief About Your Project</label><br />
+                            @Html.TextArea("AboutProject", string.Empty, 10, 70, null)
+
+                            @Html.ValidationMessageFor(model => model.AboutProject, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <label>Write The Techniques And Languages you Are Use It In Your Project</label><br />
+                            @Html.TextArea("techniques", string.Empty, 10, 70, null)
+
+                            @Html.ValidationMessageFor(model => model.techniques, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <label>Enter Your Project Link</label>
+                            @Html.EditorFor(model => model.ProjectLink, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ProjectLink, "", new { @class = "text-danger" })
+
+                        </div>
+
+                        <div class="col-lg-4 ml-auto">
+                            <div class="row">
+                                <div class="col-6">
+                                    <input type="submit" value="Create" class="btn btn-block btn-primary btn-md" />
+
+                                    @*<a href="#" class="btn btn-block btn-light btn-md"><span class="icon-open_in_new mr-2"></span>Preview</a>*@
+                                </div>
+                                @*<div class="col-6">
+                                        <a href="#" class="btn btn-block btn-primary btn-md">Save Job</a>
+                                    </div>*@
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </section>
+}
+
+@*@using (Html.BeginForm("Create", "Informaions", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>project</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ProjectName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ProjectName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ProjectName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ProjectLink, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ProjectLink, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ProjectLink, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.techniques, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.techniques, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.techniques, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.AboutProject, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.AboutProject, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.AboutProject, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ProjectType, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.ProjectType)
+                        @Html.ValidationMessageFor(model => model.ProjectType, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@

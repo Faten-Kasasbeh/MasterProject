@@ -1,0 +1,176 @@
+﻿@model IEnumerable<Master_Project.Models.Informaion>
+
+<section class="section-hero overlay inner-page bg-image" style="background-image: url('../../template/images/bg.png');" id="home-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1 class="text-white font-weight-bold">Your Profile</h1>
+                <div class="custom-breadcrumbs">
+                    <a href="@Url.Action("Index","Home")">Home</a> <span class="mx-2 slash">/</span>
+                    <span class="text-white"><strong>Potrfolio</strong></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@foreach (var item in Model)
+{
+
+
+
+        <section class="site-section">
+            @if (item.Accepted == true)
+            {
+                @*<h1>@result</h1>*@
+                <div class="container">
+                    <div class="row align-items-center mb-5">
+                        <div class="col-lg-6 mb-4 mb-lg-0">
+                            <div class="d-flex align-items-center">
+                                <div class="border p-2 d-inline-block mr-3 rounded">
+                                    <img src="~/Content/@item.Img" width="100px" height="100px" />
+                                </div>
+                                <div>
+                                    <h2></h2>
+                                    <div>
+                                        <span class="ml-0 mr-2 mb-2"><span class="icon-briefcase mr-2"></span>@item.FirstName @item.LastName</span>
+                                        <span class="m-2"><span class="icon-room mr-2"></span>@item.City.CityName</span><br />
+                                        <span class="m-2"><span class="icon-laptop mr-2"></span><span class="text-primary">@item.Job.JobName</span></span> <br />
+                                        @if (item.IsPayed == null)
+                                        {
+                                            <span class="m-2"><span class="icon-clock-o mr-2"></span><span class="text-danger">Your free trial will expire in @Session["days12"] days</span></span>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-5">
+                                    <a href="@Url.Action("create", "Projects")" class="btn btn-block btn-primary btn-md"><span class="icon-heart-o mr-2 text-danger"></span>Upload Project</a>
+
+                                </div>
+                                @if (item.IsPayed == null || item.IsPayed == false)
+                                {
+                                    <div class="col-3">
+                                        <a href="@Url.Action("PayView", "Informaions", new { id = item.IdUser })" class="btn btn-block btn-success btn-md">Pay Now</a>
+
+                                    </div>}
+                                <div class="col-4">
+                                    <a href="@Url.Action("Edit", "Informaions", new { id = item.IdUser })" class="btn btn-block btn-light btn-md">Edit Your Profile</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="mb-5">
+                                @*<figure class="mb-5"><img src="images/job_single_img_1.jpg" alt="Image" class="img-fluid rounded"></figure>*@
+                                <h3 class="h5 d-flex align-items-center mb-4 text-pri text-capitalize"><span class="icon-align-left mr-3"></span>About @item.FirstName @item.LastName</h3>
+                                <p>@item.About</p>
+                            </div>
+                            <div class="mb-5">
+                                <h3 class="h5 d-flex align-items-center mb-4 text-pri"><span class="icon-laptop mr-3"></span>Education + Experiences</h3>
+                                <ul class="list-unstyled m-0 p-0">
+                                    <li class="d-flex align-items-start mb-2"><span class="icon-book mr-2 text-muted"></span><span>Orange Coding Acadimy</span></li>
+                                    @if (item.University != null)
+                                    {
+                                        <li class="d-flex align-items-start mb-2"><span class="icon-mortar-board mr-2 text-muted"></span><span>@item.University1.UniversityName / @item.Major (@item.GradDate.Value.ToString("yyyy") )</span></li>
+                                    }
+
+                                    <li class="d-flex align-items-start mb-2"><span class="icon-work mr-2 text-muted"></span><span>@item.Experiences</span></li>
+
+                                </ul>
+                            </div>
+
+                            <div class="mb-5">
+                                <h3 class="h5 d-flex align-items-center mb-4 text-pri"><span class="icon-book mr-3"></span>Resume + SKills</h3>
+                                <ul class="list-unstyled m-0 p-0">
+                                    <li class="d-flex align-items-start mb-2"><span class="icon-check_circle mr-2 text-muted"></span><span>@item.Skills</span></li>
+                                </ul>
+                                <p>Resme</p>
+                                <a href="~/Content/@item.CV" download>
+                                    <embed src="~/Content/@item.CV#zoom=100"
+                                           type="application/pdf" frameBorder="0" scrolling="auto" height="100%" width="100%">
+                                    </embed>
+                                </a>
+                                <a href="~/Content/@item.CV" download>Download This Resume</a>
+                            </div>
+
+
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="bg-light p-3 border rounded mb-4">
+                                <h3 class="text-pri  mt-3 h5 pl-3 mb-3 "><span class="icon-turned_in mr-3"></span>Contact Information </h3>
+                                <ul class="list-unstyled pl-3 mb-0">
+                                    <li class="mb-2"> <span class="icon-phone" style="color: #F56F1A"></span><strong class="text-black"></strong> @item.Phone</li>
+                                    <li class="mb-2"><span style="color: #F56F1A" class="icon-envelope"></span><strong class="text-black"></strong> @item.AspNetUser.Email </li>
+                                    <li class="mb-2"><span style="color: #F56F1A" class="icon-github"></span><strong class="text-black"></strong> @item.Github </li>
+
+                                </ul>
+                            </div>
+
+                            <div class="bg-light p-3 border rounded">
+                                <h3 class="text-pri  mt-3 h5 pl-3 mb-3 ">Other Information</h3>
+                                <div class="px-3">
+                                    <p class="pt-3 pb-3 pr-3 pl-0"><span> Birth Date:  </span>  @item.BirthDate.Value.ToString("dd/MM/yyyy")</p>
+                                    <p class="pt-3 pb-3 pr-3 pl-0"><span>Nationality: </span>@item.Ntionality</p>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+
+                    <h3 class="h5 d-flex align-items-center mb-4 text-pri"><span class="icon-laptop mr-3"></span>@item.FirstName's Projects</h3>
+                    <div class="d-flex flex-wrap justify-content-between">
+
+                        @{Master_Project.Models.Master_projectEntities dd = new Master_Project.Models.Master_projectEntities();
+                            Master_Project.Models.project project = new Master_Project.Models.project();
+                            var proj = dd.projects.Where(i => i.IdUserProject == item.IdUser);
+
+                            foreach (var item1 in proj)
+                            {
+
+                                <div class="card" style="width: 450px; margin-top:10px;">
+
+                                    @{
+                                        string videoUrl = item1.ProjectLink;
+                                        string videoId = videoUrl.Substring(videoUrl.IndexOf("v=") + 2);
+                                        string thumbnailUrl = "http://img.youtube.com/vi/" + videoId + "/0.jpg";
+                                    }
+                                    <a href="@videoUrl" target="_blank" class="block__96788" data-fancybox data-ratio="2"><img src="@thumbnailUrl" alt="Image" class="img-fluid rounded mb-4"></a>
+                                    <div class="card-body d-flex flex-column align-content-center">
+                                        <h5 class="card-title">@item1.ProjectName Project</h5>
+                                        <p class="text-black">@item1.AboutProject </p>
+                                        <a href="@Url.Action("SingleProject", "projects", new { id = item1.IdProject })" class="btn btn-primary" style="margin-top:auto">Show Details</a>
+                                    </div>
+                                </div>}
+
+
+
+                        }
+                    </div>
+                </div>
+            }
+            else if (item.Accepted == null)
+              
+                  {
+                    <div>
+                        Please Wait Untill Admin Accept
+                    </div>
+                }
+
+
+
+
+            </section>
+
+                                        }
+                                    
